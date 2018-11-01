@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Custom Tables with Firebase
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>New Jobs List</p>
+  <table>
+      <tr>
+        <th class="serial">Sl.No</th>
+        <th>Title</th>
+        <th>Department</th>
+        <th>Published Date</th>
+      </tr>
+      <tr *ngFor="let job of jobs; let i = index" >
+        <td class="serial">{{i+1}}</td>
+        <td>{{job.title}}</td>
+        <td>{{job.department}}</td>
+        <td>{{job.postedOn}}</td>
+      </tr>
+    </table>
+</ion-content>
