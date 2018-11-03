@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { DataProvider } from '../../providers/data/data';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -9,15 +10,13 @@ export class HomePage {
   jobs: any;
   constructor(
     public navCtrl: NavController,
-    public db: AngularFireDatabase
+    public db: DataProvider
     ) {
     }
 
   ionViewDidLoad() {
-    this.db.list('jobs/').valueChanges().subscribe((data) => { 
+    this.db.getjobsList().subscribe( data => {
       this.jobs = data;
-    },(err)=>{
-      console.log("probleme : ", err)
     });
   }
   
